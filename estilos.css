@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulacro Arte y Cultura</title>
+  <!-- Enlace corregido al CSS -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Simulacro de Prueba - Arte y Cultura</h1>
+  <form id="examen">
+
+    <!-- Pregunta 1 -->
+    <div class="pregunta">
+      <p><strong>1.</strong> Fernanda es una estudiante con discapacidad física...  
+      ¿Cuál comentario está alineado al enfoque inclusivo?</p>
+      <label><input type="radio" name="p1" value="A"> A) Llevarla siempre en su silla.</label><br>
+      <label><input type="radio" name="p1" value="B"> B) Preguntarle en qué casos requiere apoyo.</label><br>
+      <label><input type="radio" name="p1" value="C"> C) Organizar turnos para cuidarla.</label>
+      <div id="retro1" class="retro"></div>
+    </div>
+
+    <!-- Pregunta 2 -->
+    <div class="pregunta">
+      <p><strong>2.</strong> Proyecto "Yo cuido mi barrio"...  
+      ¿Qué acción pedagógica es más pertinente desde el enfoque de derechos?</p>
+      <label><input type="radio" name="p2" value="A"> A) Recoger quejas y elaborar solicitud.</label><br>
+      <label><input type="radio" name="p2" value="B"> B) Plenaria sobre mejoras y replicar acciones.</label><br>
+      <label><input type="radio" name="p2" value="C"> C) Conversar sobre limitaciones y plantear propuestas.</label>
+      <div id="retro2" class="retro"></div>
+    </div>
+
+    <!-- Aquí van las demás preguntas hasta la 60 -->
+
+    <button type="button" onclick="calificar()">Calificar examen</button>
+  </form>
+
+  <div id="resultado"></div>
+  <!-- Enlace corregido al JS -->
+  <script src="js/examen.js"></script>
+</body>
+</html>
+
