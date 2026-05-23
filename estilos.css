@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Simulacro Arte y Cultura</title>
-  <!-- Enlace corregido al CSS -->
-  <link rel="stylesheet" href="estilos.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #940fa0; }
+    .pregunta { margin-bottom: 20px; padding: 10px; border: 1px solid #aab16d; border-radius: 5px; }
+    .retro { margin-top: 5px; font-weight: bold; }
+    .correcta { color: green; }
+    .incorrecta { color: red; }
+    #resultado { font-size: 18px; margin-top: 20px; font-weight: bold; }
+    button { margin-top: 10px; padding: 8px 12px; }
+  </style>
 </head>
 <body>
-  <h1>Simulacro de Prueba - Arte y Cultura</h1>
-  <form id="examen">
-
+  <h1>Simulacro de Prueba - Arte y Cultura - 
+    Edgardo Santiago Manrique Maguiñ</h1>
+  <form id="PRUEBA 23">
+    
     <!-- Pregunta 1 -->
     <div class="pregunta">
       <p><strong>1.</strong> Fernanda es una estudiante con discapacidad física...  
@@ -30,7 +39,622 @@
       <div id="retro2" class="retro"></div>
     </div>
 
-    <!-- Aquí van las demás preguntas hasta la 60 -->
+    <button type="button" onclick="calificar()">Calificar examen</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script>
+    // Clave de respuestas (según clave 23.pdf)
+    const respuestas = {
+      p1: "B",
+      p2: "C",
+      p3: "B",
+      p4: "A",
+      p5: "C",
+      p6: "A",
+      p7: "A",
+      p8: "A",
+      p9: "A",
+      p10: "B",
+      p11: "B",
+      p12: "A",
+      132: "B",
+      P14: "B",
+      P15: "B",
+      P16: "B",
+      P17: "C",
+      P18: "B",
+      P19: "C",
+      p20: "B",
+      p21: "A",
+      p22: "A",
+      p23: "B",
+      p24: "C",
+      p25: "C",
+      p26: "C",
+      p27: "A",
+      p28: "C",
+      p29: "C",
+      p30: "A",
+      p31: "C",
+      p32: "C",
+      p33: "B",
+      p34: "B",
+      p35: "B",
+      p36: "B",
+      p37: "C",
+      p38: "A",
+      p39: "B",
+      p40: "A",
+      p41: "C",
+      p42: "C",
+      p43: "C",
+      p44: "A",
+      p45: "A",
+      p46: "A",
+      p47: "A",
+      p48: "A",
+      p49: "A",
+      p50: "B",
+      p51: "A",
+      p52: "B",
+      p53: "A",
+      p54: "B",
+      p55: "B",
+      p56: "C",
+      p57: "B",
+      p58: "C",
+      p59: "C",
+      p60: "B",
+    };
+
+    function calificar() {
+      let correctas = 0;
+      let total = Object.keys(respuestas).length;
+
+      for (let key in respuestas) {
+        let seleccionada = document.querySelector(`input[name="${key}"]:checked`);
+        let retro = document.getElementById("retro" + key.substring(1));
+        if (seleccionada) {
+          if (seleccionada.value === respuestas[key]) {
+            correctas++;
+            retro.textContent = "✔ Correcto";
+            retro.className = "retro correcta";
+          } else {
+            retro.textContent = "✘ Incorrecto. La respuesta correcta es " + respuestas[key];
+            retro.className = "retro incorrecta";
+          }
+        } else {
+          retro.textContent = "No marcaste respuesta.";
+          retro.className = "retro incorrecta";
+        }
+      }
+
+      document.getElementById("resultado").textContent =
+        "Tu puntaje: " + correctas + " de " + total + " (" + Math.round((correctas/total)*100) + "%)";
+    }
+  </script>
+</body>
+</html>
+
+<!-- Pregunta 3 -->
+<div class="pregunta">
+  <p><strong>3.</strong> El docente de Arte y Cultura busca ejemplos de collage. ¿Cuál de las siguientes obras es un collage?</p>
+  <label><input type="radio" name="p3" value="A"> A) Warhol, Serie Marilyn Monroe.</label><br>
+  <label><input type="radio" name="p3" value="B"> B) Swofford, San Jerónimo abraza su propia mortalidad.</label><br>
+  <label><input type="radio" name="p3" value="C"> C) Duchamp, L.H.O.O.Q.</label>
+  <div id="retro3" class="retro"></div>
+</div>
+
+<!-- Pregunta 4 -->
+<div class="pregunta">
+  <p><strong>4.</strong> El docente propone realizar un collage en clase. ¿Cuál estrategia es más pertinente?</p>
+  <label><input type="radio" name="p4" value="A"> A) Traer revistas, recortar imágenes y pegarlas en cartulina.</label><br>
+  <label><input type="radio" name="p4" value="B"> B) Cortar papeles de colores en cuadrados y cubrir un dibujo.</label><br>
+  <label><input type="radio" name="p4" value="C"> C) Hacer dibujos libres y pegarlos en un papelógrafo grupal.</label>
+  <div id="retro4" class="retro"></div>
+</div>
+
+<!-- Pregunta 5 -->
+<div class="pregunta">
+  <p><strong>5.</strong> ¿Cuál es la principal ventaja pedagógica de realizar collages con los estudiantes?</p>
+  <label><input type="radio" name="p5" value="A"> A) Reutilizar materiales y desarrollar conciencia ambiental.</label><br>
+  <label><input type="radio" name="p5" value="B"> B) Crear imágenes novedosas que generen ingresos.</label><br>
+  <label><input type="radio" name="p5" value="C"> C) Explorar relaciones entre imágenes y desarrollar nociones de composición.</label>
+  <div id="retro5" class="retro"></div>
+</div>
+
+<!-- Pregunta 6 -->
+<div class="pregunta">
+  <p><strong>6.</strong> Al observar tablas de Sarhua, los estudiantes identifican características comunes y analizan la distribución de figuras. ¿Qué capacidad desarrollan?</p>
+  <label><input type="radio" name="p6" value="A"> A) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p6" value="B"> B) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p6" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro6" class="retro"></div>
+</div>
+
+<!-- Pregunta 7 -->
+<div class="pregunta">
+  <p><strong>7.</strong> ¿Qué actividad es más pertinente para analizar la iconografía de las tablas de Sarhua?</p>
+  <label><input type="radio" name="p7" value="A"> A) Realizar un recorrido visual estableciendo relaciones.</label><br>
+  <label><input type="radio" name="p7" value="B"> B) Analizar el equilibrio y la simetría.</label><br>
+  <label><input type="radio" name="p7" value="C"> C) Observar personajes, colores y diseños más usados.</label>
+  <div id="retro7" class="retro"></div>
+</div>
+
+<!-- Pregunta 8 -->
+<div class="pregunta">
+  <p><strong>8.</strong> Los estudiantes describen el día a día de las familias representadas en las tablas de Sarhua. ¿Cuál es el propósito principal?</p>
+  <label><input type="radio" name="p8" value="A"> A) Comprender el valor de las tablas como arte testimonial.</label><br>
+  <label><input type="radio" name="p8" value="B"> B) Adquirir conocimientos sobre actividades comunitarias.</label><br>
+  <label><input type="radio" name="p8" value="C"> C) Desarrollar habilidades para inferir información pictórica.</label>
+  <div id="retro8" class="retro"></div>
+</div>
+
+<!-- Pregunta 9 -->
+<div class="pregunta">
+  <p><strong>9.</strong> La familia Evanan confeccionó tablas sobre la pandemia de COVID-19. ¿Cuál es el propósito principal de mostrar este trabajo?</p>
+  <label><input type="radio" name="p9" value="A"> A) Comprender que las tablas son una manifestación viva de la comunidad.</label><br>
+  <label><input type="radio" name="p9" value="B"> B) Valorar la creatividad e innovación de los artistas.</label><br>
+  <label><input type="radio" name="p9" value="C"> C) Entender cómo la pandemia afectó social y económicamente.</label>
+  <div id="retro9" class="retro"></div>
+</div>
+
+<!-- Pregunta 10 -->
+<div class="pregunta">
+  <p><strong>10.</strong> Los estudiantes diseñan un proyecto artístico inspirado en las tablas de Sarhua. ¿Qué capacidad desarrollan principalmente?</p>
+  <label><input type="radio" name="p10" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p10" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p10" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro10" class="retro"></div>
+</div>
+<!-- Pregunta 11 -->
+<div class="pregunta">
+  <p><strong>11.</strong> El docente acompaña el desarrollo de proyectos artísticos y propone una presentación final. ¿En qué aspecto debe poner énfasis al evaluar?</p>
+  <label><input type="radio" name="p11" value="A"> A) Identificación de eventos significativos de la comunidad.</label><br>
+  <label><input type="radio" name="p11" value="B"> B) Reflexión sobre decisiones tomadas y su relación con el propósito.</label><br>
+  <label><input type="radio" name="p11" value="C"> C) Dominio de la técnica artística lograda.</label>
+  <div id="retro11" class="retro"></div>
+</div>
+
+<!-- Pregunta 12 -->
+<div class="pregunta">
+  <p><strong>12.</strong> La docente muestra una escena sin sonido y luego con música gitana. ¿Qué proceso pedagógico promueve principalmente?</p>
+  <label><input type="radio" name="p12" value="A"> A) Conflicto cognitivo.</label><br>
+  <label><input type="radio" name="p12" value="B"> B) Transferencia de información.</label><br>
+  <label><input type="radio" name="p12" value="C"> C) Recuperación de saberes previos.</label>
+  <div id="retro12" class="retro"></div>
+</div>
+
+<!-- Pregunta 13 -->
+<div class="pregunta">
+  <p><strong>13.</strong> Juan comenta que al principio no le gustó la canción, pero luego entendió su sentido y le agradó. ¿Por qué es un proceso metacognitivo?</p>
+  <label><input type="radio" name="p13" value="A"> A) Porque se muestra motivado por los aprendizajes.</label><br>
+  <label><input type="radio" name="p13" value="B"> B) Porque reflexiona sobre emociones e ideas experimentadas.</label><br>
+  <label><input type="radio" name="p13" value="C"> C) Porque comprende el mensaje de la canción.</label>
+  <div id="retro13" class="retro"></div>
+</div>
+
+<!-- Pregunta 14 -->
+<div class="pregunta">
+  <p><strong>14.</strong> Los estudiantes reconocen música cOREANA en una película. ¿Qué proceso pedagógico se evidencia?</p>
+  <label><input type="radio" name="p14" value="A"> A) Metacognición.</label><br>
+  <label><input type="radio" name="p14" value="B"> B) Conflicto cognitivo.</label><br>
+  <label><input type="radio" name="p14" value="C"> C) Recuperación de saberes previos.</label>
+  <div id="retro14" class="retro"></div>
+</div>
+
+<!-- Pregunta 15 -->
+<div class="pregunta">
+  <p><strong>15.</strong> La docente pide cantar glissandos y describir qué sucede. ¿Qué capacidad se promueve principalmente?</p>
+  <label><input type="radio" name="p15" value="A"> A) Reflexiona creativa y críticamente.</label><br>
+  <label><input type="radio" name="p15" value="B"> B) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p15" value="C"> C) Contextualiza manifestaciones artístico-culturales.</label>
+  <div id="retro15" class="retro"></div>
+</div>
+
+<!-- Pregunta 16 -->
+<div class="pregunta">
+  <p><strong>16.</strong> En la película Héroe, los violines imitan al erhu. ¿Qué pregunta es más relevante?</p>
+  <label><input type="radio" name="p16" value="A"> A) ¿Qué característica común permite producir glissandos?</label><br>
+  <label><input type="radio" name="p16" value="B"> B) ¿Qué quiere expresar el compositor al pedir imitar al erhu?</label><br>
+  <label><input type="radio" name="p16" value="C"> C) ¿Qué ventajas ofrece el violín frente al erhu?</label>
+  <div id="retro16" class="retro"></div>
+</div>
+
+<!-- Pregunta 17 -->
+<div class="pregunta">
+  <p><strong>17.</strong> Antes de reproducir música de Kukulí, ¿qué acción es más pertinente para percibir ritmos andinos?</p>
+  <label><input type="radio" name="p17" value="A"> A) Mostrar fotos de instrumentos andinos.</label><br>
+  <label><input type="radio" name="p17" value="B"> B) Escuchar música andina escrita para orquesta sinfónica.</label><br>
+  <label><input type="radio" name="p17" value="C"> C) Oír música de danzas folklóricas andinas.</label>
+  <div id="retro17" class="retro"></div>
+</div>
+
+<!-- Pregunta 18 -->
+<div class="pregunta">
+  <p><strong>18.</strong> Un estudiante pregunta si siempre es mejor usar música de orquesta en películas. ¿Qué grupo de preguntas es más apropiado para retroalimentar?</p>
+  <label><input type="radio" name="p18" value="A"> A) Diferencia de costos entre música popular y orquesta.</label><br>
+  <label><input type="radio" name="p18" value="B"> B) ¿Es necesario que todas las películas usen orquesta? ¿Qué motivos tuvo el director?</label><br>
+  <label><input type="radio" name="p18" value="C"> C) ¿Qué música se escucha más en comunidades rurales?</label>
+  <div id="retro18" class="retro"></div>
+</div>
+
+<!-- Pregunta 19 -->
+<div class="pregunta">
+  <p><strong>19.</strong> Los estudiantes comparan música de distintas películas y reflexionan sobre motivaciones de los directores. ¿Cuál es el propósito principal?</p>
+  <label><input type="radio" name="p19" value="A"> A) Comprender necesidad de usar música originaria.</label><br>
+  <label><input type="radio" name="p19" value="B"> B) Descubrir utilidad de música diversa para enriquecer escenas.</label><br>
+  <label><input type="radio" name="p19" value="C"> C) Reflexionar sobre el valor de la música en el cine para expresar identidad cultural.</label>
+  <div id="retro19" class="retro"></div>
+</div>
+
+<!-- Pregunta 20 -->
+<div class="pregunta">
+  <p><strong>20.</strong> Los estudiantes elaboran un video con banda sonora de la jornada escolar. ¿Qué capacidad desarrollan principalmente?</p>
+  <label><input type="radio" name="p20" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p20" value="B"> B) Aplica procesos artísticos.</label><br>
+  <label><input type="radio" name="p20" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro20" class="retro"></div>
+</div>
+<!-- Pregunta 21 -->
+<div class="pregunta">
+  <p><strong>21.</strong> La docente pide que los estudiantes investiguen antes de diseñar sus trajes. ¿Qué actividad es más apropiada?</p>
+  <label><input type="radio" name="p21" value="A"> A) Hacer un portafolio gráfico con imágenes de costumbres y creencias familiares.</label><br>
+  <label><input type="radio" name="p21" value="B"> B) Buscar imágenes históricas en biblioteca o internet.</label><br>
+  <label><input type="radio" name="p21" value="C"> C) Entrevistar a compañeros sobre sus gustos de vestimenta.</label>
+  <div id="retro21" class="retro"></div>
+</div>
+
+<!-- Pregunta 22 -->
+<div class="pregunta">
+  <p><strong>22.</strong> ¿Qué actividad es más pertinente para que los estudiantes representen su identidad en el diseño de trajes?</p>
+  <label><input type="radio" name="p22" value="A"> A) Reflexionar sobre sus características personales y orígenes culturales.</label><br>
+  <label><input type="radio" name="p22" value="B"> B) Copiar diseños shipibo-konibo.</label><br>
+  <label><input type="radio" name="p22" value="C"> C) Escoger un traje de moda actual.</label>
+  <div id="retro22" class="retro"></div>
+</div>
+
+<!-- Pregunta 23 -->
+<div class="pregunta">
+  <p><strong>23.</strong> ¿Qué capacidad se desarrolla principalmente cuando los estudiantes diseñan un traje que refleje su identidad?</p>
+  <label><input type="radio" name="p23" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p23" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p23" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro23" class="retro"></div>
+</div>
+
+<!-- Pregunta 24 -->
+<div class="pregunta">
+  <p><strong>24.</strong> ¿Qué ventaja pedagógica tiene que los estudiantes diseñen trajes que reflejen su identidad?</p>
+  <label><input type="radio" name="p24" value="A"> A) Aprenden técnicas de costura.</label><br>
+  <label><input type="radio" name="p24" value="B"> B) Se familiarizan con la moda actual.</label><br>
+  <label><input type="radio" name="p24" value="C"> C) Refuerzan el reconocimiento y valoración de su identidad cultural.</label>
+  <div id="retro24" class="retro"></div>
+</div>
+
+<!-- Pregunta 25 -->
+<div class="pregunta">
+  <p><strong>25.</strong> ¿Qué propósito tiene invitar a una diseñadora que usa arte shipibo-konibo en sus prendas?</p>
+  <label><input type="radio" name="p25" value="A"> A) Que los estudiantes aprendan técnicas de bordado.</label><br>
+  <label><input type="radio" name="p25" value="B"> B) Que los estudiantes imiten sus diseños.</label><br>
+  <label><input type="radio" name="p25" value="C"> C) Que los estudiantes valoren la herencia cultural en la moda.</label>
+  <div id="retro25" class="retro"></div>
+</div>
+
+<!-- Pregunta 26 -->
+<div class="pregunta">
+  <p><strong>26.</strong> ¿Qué capacidad se desarrolla cuando los estudiantes reflexionan sobre sus costumbres y creencias para diseñar un traje?</p>
+  <label><input type="radio" name="p26" value="A"> A) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p26" value="B"> B) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p26" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro26" class="retro"></div>
+</div>
+
+<!-- Pregunta 27 -->
+<div class="pregunta">
+  <p><strong>27.</strong> ¿Qué acción es más pertinente para que los estudiantes valoren la diversidad cultural en el diseño de trajes?</p>
+  <label><input type="radio" name="p27" value="A"> A) Compartir sus diseños y explicar cómo reflejan su identidad.</label><br>
+  <label><input type="radio" name="p27" value="B"> B) Copiar modelos de diseñadores famosos.</label><br>
+  <label><input type="radio" name="p27" value="C"> C) Usar únicamente colores de moda.</label>
+  <div id="retro27" class="retro"></div>
+</div>
+
+<!-- Pregunta 28 -->
+<div class="pregunta">
+  <p><strong>28.</strong> ¿Qué propósito tiene que los estudiantes presenten sus trajes diseñados ante sus compañeros?</p>
+  <label><input type="radio" name="p28" value="A"> A) Aprender técnicas de exposición oral.</label><br>
+  <label><input type="radio" name="p28" value="B"> B) Mostrar dominio técnico en costura.</label><br>
+  <label><input type="radio" name="p28" value="C"> C) Socializar procesos creativos y valorar la diversidad cultural.</label>
+  <div id="retro28" class="retro"></div>
+</div>
+
+<!-- Pregunta 29 -->
+<div class="pregunta">
+  <p><strong>29.</strong> ¿Qué capacidad se desarrolla cuando los estudiantes explican cómo sus diseños reflejan su identidad?</p>
+  <label><input type="radio" name="p29" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p29" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p29" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro29" class="retro"></div>
+</div>
+
+<!-- Pregunta 30 -->
+<div class="pregunta">
+  <p><strong>30.</strong> ¿Qué propósito tiene que los estudiantes reflexionen sobre sus diseños después de presentarlos?</p>
+  <label><input type="radio" name="p30" value="A"> A) Reconocer aprendizajes y valorar la diversidad cultural.</label><br>
+  <label><input type="radio" name="p30" value="B"> B) Mejorar técnicas de costura.</label><br>
+  <label><input type="radio" name="p30" value="C"> C) Adoptar tendencias de moda internacional.</label>
+  <div id="retro30" class="retro"></div>
+</div>
+<!-- Pregunta 31 -->
+<div class="pregunta">
+  <p><strong>31.</strong> Los estudiantes observan imágenes de máscaras africanas y describen sus formas geométricas. ¿Qué capacidad se desarrolla principalmente?</p>
+  <label><input type="radio" name="p31" value="A"> A) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p31" value="B"> B) Reflexiona creativa y críticamente.</label><br>
+  <label><input type="radio" name="p31" value="C"> C) Percibe manifestaciones artístico-culturales.</label>
+  <div id="retro31" class="retro"></div>
+</div>
+
+<!-- Pregunta 32 -->
+<div class="pregunta">
+  <p><strong>32.</strong> La docente pide comparar máscaras africanas con máscaras andinas. ¿Qué proceso pedagógico se promueve?</p>
+  <label><input type="radio" name="p32" value="A"> A) Transferencia.</label><br>
+  <label><input type="radio" name="p32" value="B"> B) Recuperación de saberes previos.</label><br>
+  <label><input type="radio" name="p32" value="C"> C) Conflicto cognitivo.</label>
+  <div id="retro32" class="retro"></div>
+</div>
+
+<!-- Pregunta 33 -->
+<div class="pregunta">
+  <p><strong>33.</strong> Los estudiantes elaboran máscaras inspiradas en las africanas y las presentan en clase. ¿Qué capacidad se evidencia?</p>
+  <label><input type="radio" name="p33" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p33" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p33" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro33" class="retro"></div>
+</div>
+
+<!-- Pregunta 34 -->
+<div class="pregunta">
+  <p><strong>34.</strong> ¿Qué propósito tiene que los estudiantes reflexionen sobre las máscaras elaboradas?</p>
+  <label><input type="radio" name="p34" value="A"> A) Reconocer aprendizajes y valorar diversidad cultural.</label><br>
+  <label><input type="radio" name="p34" value="B"> B) Mejorar técnicas de elaboración.</label><br>
+  <label><input type="radio" name="p34" value="C"> C) Adoptar tendencias de moda internacional.</label>
+  <div id="retro34" class="retro"></div>
+</div>
+
+<!-- Pregunta 35 -->
+<div class="pregunta">
+  <p><strong>35.</strong> Los estudiantes observan esculturas de Marina Núñez del Prado. ¿Qué proceso se evidencia en la secuencia de imágenes?</p>
+  <label><input type="radio" name="p35" value="A"> A) Conceptualismo.</label><br>
+  <label><input type="radio" name="p35" value="B"> B) Abstracción.</label><br>
+  <label><input type="radio" name="p35" value="C"> C) Sincretismo.</label>
+  <div id="retro35" class="retro"></div>
+</div>
+
+<!-- Pregunta 36 -->
+<div class="pregunta">
+  <p><strong>36.</strong> En el museo, un texto describe la obra Turullay. ¿Cuál fragmento contiene una apreciación solo formal?</p>
+  <label><input type="radio" name="p36" value="A"> A) “La autora capta la esencia del toro...”</label><br>
+  <label><input type="radio" name="p36" value="B"> B) “La proporción de sus formas, su equilibrio, ritmo y tensión revelan gran maestría técnica...”</label><br>
+  <label><input type="radio" name="p36" value="C"> C) “Se aprecia una continua evolución de símbolos ancestrales...”</label>
+  <div id="retro36" class="retro"></div>
+</div>
+
+<!-- Pregunta 37 -->
+<div class="pregunta">
+  <p><strong>37.</strong> El docente reproduce música africana sin tambores, como el género zulú isicathamiya. ¿Qué proceso promueve principalmente?</p>
+  <label><input type="radio" name="p37" value="A"> A) Transferencia.</label><br>
+  <label><input type="radio" name="p37" value="B"> B) Metacognición.</label><br>
+  <label><input type="radio" name="p37" value="C"> C) Conflicto cognitivo.</label>
+  <div id="retro37" class="retro"></div>
+</div>
+
+<!-- Pregunta 38 -->
+<div class="pregunta">
+  <p><strong>38.</strong> Los estudiantes escuchan música africana y luego música peruana influenciada por ella. ¿Qué capacidad se desarrolla?</p>
+  <label><input type="radio" name="p38" value="A"> A) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p38" value="B"> B) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p38" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro38" class="retro"></div>
+</div>
+
+<!-- Pregunta 39 -->
+<div class="pregunta">
+  <p><strong>39.</strong> Los estudiantes elaboran un proyecto musical inspirado en ritmos africanos. ¿Qué capacidad se evidencia?</p>
+  <label><input type="radio" name="p39" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p39" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p39" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro39" class="retro"></div>
+</div>
+
+<!-- Pregunta 40 -->
+<div class="pregunta">
+  <p><strong>40.</strong> Los estudiantes reflexionan sobre la influencia africana en la música peruana. ¿Qué propósito tiene esta actividad?</p>
+  <label><input type="radio" name="p40" value="A"> A) Reconocer aprendizajes y valorar diversidad cultural.</label><br>
+  <label><input type="radio" name="p40" value="B"> B) Mejorar técnicas musicales.</label><br>
+  <label><input type="radio" name="p40" value="C"> C) Adoptar tendencias musicales internacionales.</label>
+  <div id="retro40" class="retro"></div>
+</div>
+
+<!-- Pregunta 41 -->
+<div class="pregunta">
+  <p><strong>41.</strong> Los estudiantes observan pinturas rupestres en imágenes digitales. ¿Qué capacidad se desarrolla principalmente?</p>
+  <label><input type="radio" name="p41" value="A"> A) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p41" value="B"> B) Reflexiona creativa y críticamente.</label><br>
+  <label><input type="radio" name="p41" value="C"> C) Percibe manifestaciones artístico-culturales.</label>
+  <div id="retro41" class="retro"></div>
+</div>
+
+<!-- Pregunta 42 -->
+<div class="pregunta">
+  <p><strong>42.</strong> La docente pide comparar pinturas rupestres con grafitis actuales. ¿Qué proceso pedagógico se promueve?</p>
+  <label><input type="radio" name="p42" value="A"> A) Recuperación de saberes previos.</label><br>
+  <label><input type="radio" name="p42" value="B"> B) Conflicto cognitivo.</label><br>
+  <label><input type="radio" name="p42" value="C"> C) Transferencia.</label>
+  <div id="retro42" class="retro"></div>
+</div>
+
+<!-- Pregunta 43 -->
+<div class="pregunta">
+  <p><strong>43.</strong> Los estudiantes elaboran pinturas inspiradas en las rupestres y las presentan en clase. ¿Qué capacidad se evidencia?</p>
+  <label><input type="radio" name="p43" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p43" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p43" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro43" class="retro"></div>
+</div>
+
+<!-- Pregunta 44 -->
+<div class="pregunta">
+  <p><strong>44.</strong> ¿Qué propósito tiene que los estudiantes reflexionen sobre las pinturas elaboradas?</p>
+  <label><input type="radio" name="p44" value="A"> A) Reconocer aprendizajes y valorar diversidad cultural.</label><br>
+  <label><input type="radio" name="p44" value="B"> B) Mejorar técnicas de pintura.</label><br>
+  <label><input type="radio" name="p44" value="C"> C) Adoptar tendencias de moda internacional.</label>
+  <div id="retro44" class="retro"></div>
+</div>
+
+<!-- Pregunta 45 -->
+<div class="pregunta">
+  <p><strong>45.</strong> Los estudiantes observan esculturas precolombinas y describen sus formas. ¿Qué capacidad se desarrolla principalmente?</p>
+  <label><input type="radio" name="p45" value="A"> A) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p45" value="B"> B) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p45" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro45" class="retro"></div>
+</div>
+
+<!-- Pregunta 46 -->
+<div class="pregunta">
+  <p><strong>46.</strong> La docente pide comparar esculturas precolombinas con esculturas modernas. ¿Qué proceso pedagógico se promueve?</p>
+  <label><input type="radio" name="p46" value="A"> A) Conflicto cognitivo.</label><br>
+  <label><input type="radio" name="p46" value="B"> B) Recuperación de saberes previos.</label><br>
+  <label><input type="radio" name="p46" value="C"> C) Transferencia.</label>
+  <div id="retro46" class="retro"></div>
+</div>
+
+<!-- Pregunta 47 -->
+<div class="pregunta">
+  <p><strong>47.</strong> Los estudiantes elaboran esculturas inspiradas en las precolombinas y las presentan en clase. ¿Qué capacidad se evidencia?</p>
+  <label><input type="radio" name="p47" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p47" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p47" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro47" class="retro"></div>
+</div>
+
+<!-- Pregunta 48 -->
+<div class="pregunta">
+  <p><strong>48.</strong> ¿Qué propósito tiene que los estudiantes reflexionen sobre las esculturas elaboradas?</p>
+  <label><input type="radio" name="p48" value="A"> A) Reconocer aprendizajes y valorar diversidad cultural.</label><br>
+  <label><input type="radio" name="p48" value="B"> B) Mejorar técnicas de escultura.</label><br>
+  <label><input type="radio" name="p48" value="C"> C) Adoptar tendencias internacionales.</label>
+  <div id="retro48" class="retro"></div>
+</div>
+
+<!-- Pregunta 49 -->
+<div class="pregunta">
+  <p><strong>49.</strong> Los estudiantes observan danzas tradicionales y describen sus movimientos. ¿Qué capacidad se desarrolla principalmente?</p>
+  <label><input type="radio" name="p49" value="A"> A) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p49" value="B"> B) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p49" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro49" class="retro"></div>
+</div>
+
+<!-- Pregunta 50 -->
+<div class="pregunta">
+  <p><strong>50.</strong> La docente pide comparar danzas tradicionales con danzas modernas. ¿Qué proceso pedagógico se promueve?</p>
+  <label><input type="radio" name="p50" value="A"> A) Recuperación de saberes previos.</label><br>
+  <label><input type="radio" name="p50" value="B"> B) Transferencia.</label><br>
+  <label><input type="radio" name="p50" value="C"> C) Conflicto cognitivo.</label>
+  <div id="retro50" class="retro"></div>
+</div>
+<!-- Pregunta 51 -->
+<div class="pregunta">
+  <p><strong>51.</strong> Los estudiantes observan fotografías de murales urbanos y describen sus colores y formas. ¿Qué capacidad se desarrolla principalmente?</p>
+  <label><input type="radio" name="p51" value="A"> A) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p51" value="B"> B) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p51" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro51" class="retro"></div>
+</div>
+
+<!-- Pregunta 52 -->
+<div class="pregunta">
+  <p><strong>52.</strong> La docente pide comparar murales urbanos con murales escolares. ¿Qué proceso pedagógico se promueve?</p>
+  <label><input type="radio" name="p52" value="A"> A) Conflicto cognitivo.</label><br>
+  <label><input type="radio" name="p52" value="B"> B) Transferencia.</label><br>
+  <label><input type="radio" name="p52" value="C"> C) Recuperación de saberes previos.</label>
+  <div id="retro52" class="retro"></div>
+</div>
+
+<!-- Pregunta 53 -->
+<div class="pregunta">
+  <p><strong>53.</strong> Los estudiantes elaboran murales inspirados en los urbanos y los presentan en clase. ¿Qué capacidad se evidencia?</p>
+  <label><input type="radio" name="p53" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p53" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p53" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro53" class="retro"></div>
+</div>
+
+<!-- Pregunta 54 -->
+<div class="pregunta">
+  <p><strong>54.</strong> ¿Qué propósito tiene que los estudiantes reflexionen sobre los murales elaborados?</p>
+  <label><input type="radio" name="p54" value="A"> A) Reconocer aprendizajes y valorar diversidad cultural.</label><br>
+  <label><input type="radio" name="p54" value="B"> B) Mejorar técnicas de pintura mural.</label><br>
+  <label><input type="radio" name="p54" value="C"> C) Adoptar tendencias internacionales.</label>
+  <div id="retro54" class="retro"></div>
+</div>
+
+<!-- Pregunta 55 -->
+<div class="pregunta">
+  <p><strong>55.</strong> Los estudiantes observan fotografías de artesanía textil y describen sus diseños. ¿Qué capacidad se desarrolla principalmente?</p>
+  <label><input type="radio" name="p55" value="A"> A) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p55" value="B"> B) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p55" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro55" class="retro"></div>
+</div>
+
+<!-- Pregunta 56 -->
+<div class="pregunta">
+  <p><strong>56.</strong> La docente pide comparar artesanía textil tradicional con moda contemporánea. ¿Qué proceso pedagógico se promueve?</p>
+  <label><input type="radio" name="p56" value="A"> A) Recuperación de saberes previos.</label><br>
+  <label><input type="radio" name="p56" value="B"> B) Transferencia.</label><br>
+  <label><input type="radio" name="p56" value="C"> C) Conflicto cognitivo.</label>
+  <div id="retro56" class="retro"></div>
+</div>
+
+<!-- Pregunta 57 -->
+<div class="pregunta">
+  <p><strong>57.</strong> Los estudiantes elaboran prendas inspiradas en artesanía textil y las presentan en clase. ¿Qué capacidad se evidencia?</p>
+  <label><input type="radio" name="p57" value="A"> A) Explora y experimenta lenguajes del arte.</label><br>
+  <label><input type="radio" name="p57" value="B"> B) Aplica procesos creativos.</label><br>
+  <label><input type="radio" name="p57" value="C"> C) Evalúa y socializa procesos y proyectos.</label>
+  <div id="retro57" class="retro"></div>
+</div>
+
+<!-- Pregunta 58 -->
+<div class="pregunta">
+  <p><strong>58.</strong> ¿Qué propósito tiene que los estudiantes reflexionen sobre las prendas elaboradas?</p>
+  <label><input type="radio" name="p58" value="A"> A) Reconocer aprendizajes y valorar diversidad cultural.</label><br>
+  <label><input type="radio" name="p58" value="B"> B) Mejorar técnicas de confección.</label><br>
+  <label><input type="radio" name="p58" value="C"> C) Adoptar tendencias internacionales.</label>
+  <div id="retro58" class="retro"></div>
+</div>
+
+<!-- Pregunta 59 -->
+<div class="pregunta">
+  <p><strong>59.</strong> Los estudiantes observan fotografías de arquitectura colonial y describen sus características. ¿Qué capacidad se desarrolla principalmente?</p>
+  <label><input type="radio" name="p59" value="A"> A) Contextualiza manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p59" value="B"> B) Percibe manifestaciones artístico-culturales.</label><br>
+  <label><input type="radio" name="p59" value="C"> C) Reflexiona creativa y críticamente.</label>
+  <div id="retro59" class="retro"></div>
+</div>
+
+    <!-- Pregunta 60 -->
+    <div class="pregunta">
+      <p><strong>60.</strong> La docente propone elaborar un video con música representativa de la comunidad. ¿Qué capacidad se desarrolla principalmente?</p>
+      <label><input type="radio" name="p60" value="A"> A) Explorar y experimentar lenguajes del arte.</label><br>
+      <label><input type="radio" name="p60" value="B"> B) Aplicar procesos artísticos.</label><br>
+      <label><input type="radio" name="p60" value="C"> C) Evaluar y socializar procesos y proyectos.</label>
+      <div id="retro60" class="retro"></div>
+    </div>
 
     <button type="button" onclick="calificar()">Calificar examen</button>
   </form>
@@ -40,4 +664,5 @@
   <script src="js/examen.js"></script>
 </body>
 </html>
+
 
